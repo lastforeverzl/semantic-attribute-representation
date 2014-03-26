@@ -6,24 +6,12 @@ Use images_iter function to get info on all files in the directory.
 
 import os, sys, re
 
-class FileInfo(dict):
+def __jpg_file_info(*args):
     """
-    store basic file info
+    Function for storing jpeg file infos.
     """
-    def __init__(self, filename, location):
-        self["name"] = filename
-        self["location"] = location
-
-class JPGFileInfo(FileInfo):
-    """
-    store image file info
-    """
-    def __init__(self, filename, location):
-        self["attribute"] = self.__parse_attribute(filename)
-        FileInfo.__init__(self, filename, location)
-
-    def __parse_attribute(self, filename):
-        return re.compile(r'(.*)_.*').match(filename).group(1)
+    attrs = ["name", "location", "attribute"]
+    return dict(zip(attrs, args))
 
 def images_iter(directory):
     """
@@ -40,10 +28,12 @@ def images_iter(directory):
     """
     imagefiles = (os.path.join(os.path.abspath(directory), f)
                   for f in os.listdir(directory))
-    def get_class(filename, module=sys.modules[__name__]):
-        "get file info class from filename extension"
-        subclass = "%sFileInfo" % os.path.splitext(filename)[1].upper()[1:]
-        return hasattr(module, subclass) and \
-               getattr(module, subclass) or FileInfo
-    return (get_class(os.path.basename(f))(os.path.basename(f), f)
-            for f in imagefiles)
+    def _parse_attribute(filename):
+        "Get image attribute from filename"
+        return re.compile(r'(.*)_.*').match(filename).group(1)
+    def _get_func(filename, module=sys.modules[__name__]):
+        "Get file info func from filename extension"
+        func = "__%s_file_info" % os.path.splitext(filename)[1].lower()[1:]
+        return getattr(module, func)
+    return (_get_func(os.path.basename(f))(os.path.basename(f), f,
+            _parse_attribute(os.path.basename(f))) for f in imagefiles)
