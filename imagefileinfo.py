@@ -1,5 +1,5 @@
 """
-Helper function for getting image file from ayahoo_test_images folder.
+Module for getting image file from ayahoo_test_images folder.
 
 Use image_list function to get info on all files in the directory.
 """
