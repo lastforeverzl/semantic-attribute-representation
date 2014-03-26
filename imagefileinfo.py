@@ -2,9 +2,11 @@
 Module for getting image file from ayahoo_test_images folder.
 
 Use images_iter function to get info on all files in the directory.
+Use filter_by_attrs function to categorize image by their attribute.
 """
 
 import os, sys, re
+from collections import defaultdict
 
 def __jpg_file_info(*args):
     """
@@ -37,3 +39,31 @@ def images_iter(directory):
         return getattr(module, func)
     return (_get_func(os.path.basename(f))(os.path.basename(f), f,
             _parse_attribute(os.path.basename(f))) for f in imagefiles)
+
+def filter_by_attrs(image_iter):
+    """
+    Filter image file by attribute name and store them into a dictionary
+
+    Parameters
+    ----------
+    image_iter: image list iterator
+
+    Returns
+    -------
+    A dictionary contains all of images categorized by attribute name.
+    """
+    def image_generator(iter):
+        for image in iter:
+            yield (image["attribute"], image["location"])
+    d = defaultdict(list)
+    for (k, v) in image_generator(image_iter):
+        d[k].append(v)
+    return d
+
+
+
+
+
+
+
+
