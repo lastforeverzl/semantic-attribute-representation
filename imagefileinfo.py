@@ -66,4 +66,3 @@ def filter_by_attrs(image_iter):
 
 
 
-
