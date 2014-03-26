@@ -23,8 +23,7 @@ class JPGFileInfo(FileInfo):
         FileInfo.__init__(self, filename, location)
 
     def __parse_attribute(self, filename):
-        pat = re.compile(r'(.*)_.*')
-        return pat.match(filename).group(1)
+        return re.compile(r'(.*)_.*').match(filename).group(1)
 
 def image_list(directory):
     """
