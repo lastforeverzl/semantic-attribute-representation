@@ -36,7 +36,7 @@ def images_iter(directory):
 
     Returns
     -------
-    A list of JPGFileInfo instances.
+    A iterator of JPGFileInfo instances.
     """
     imagefiles = (os.path.join(os.path.abspath(directory), f)
                   for f in os.listdir(directory))
