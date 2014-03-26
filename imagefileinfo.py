@@ -1,7 +1,7 @@
 """
 Module for getting image file from ayahoo_test_images folder.
 
-Use image_list function to get info on all files in the directory.
+Use images_iter function to get info on all files in the directory.
 """
 
 import os, sys, re
@@ -25,7 +25,7 @@ class JPGFileInfo(FileInfo):
     def __parse_attribute(self, filename):
         return re.compile(r'(.*)_.*').match(filename).group(1)
 
-def images(directory):
+def images_iter(directory):
     """
     Get a iterable object that contains instances of JPGFileInfo
     class created by all of files inside the input directory.
