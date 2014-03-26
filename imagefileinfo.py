@@ -17,8 +17,8 @@ def __jpg_file_info(*args):
 
 def images_iter(directory):
     """
-    Get a iterable object that contains instances of JPGFileInfo
-    class created by all of files inside the input directory.
+    Get a interator that contains instances of file info dict
+    created by all of files inside the input directory.
 
     Parameters
     ----------
@@ -26,7 +26,7 @@ def images_iter(directory):
 
     Returns
     -------
-    A iterator of JPGFileInfo instances.
+    A iterator of a list of file info dict.
     """
     imagefiles = (os.path.join(os.path.abspath(directory), f)
                   for f in os.listdir(directory))
