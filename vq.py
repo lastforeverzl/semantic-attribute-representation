@@ -132,8 +132,7 @@ def code_book(folder_path, K, save=True, read_from_txt = False):
     if read_from_txt is True:
         nd = np.loadtxt('word.txt')
     else:
-        for each_img in os.listdir(folder_path):
-            image_path = folder_path + each_img
+        for image_path in folder_path:
             kp, des = __sift_dect_and_compute(image_path)
             print image_path, "--> SIFT feature number: ", len(kp)
             des_pool = np.concatenate((des_pool, des))
