@@ -74,7 +74,7 @@ def quatization(image, code_book, soft=False):
     adict: the frequency histogram of the representation of bag of words
     """
     kp, des = __sift_dect_and_compute(image)
-    print image, "--> SIFT feature number: ", len(kp)
+    print "Quantizating: ",image, "--> SIFT feature number: ", len(kp)
     adict = {}
     shortest = []
     for i in range(0, len(code_book)):
@@ -105,8 +105,13 @@ def quatization(image, code_book, soft=False):
                        
     return adict                    
     
-
-def code_book(folder_path, K, save=True, read_from_txt = False):
+def batch_quantization( image_path, code_book, soft=False):
+	sample_histograms = []
+	for each_img in image_path:
+		sample_histograms.append(quatization(each_img, code_book, soft))
+	return sample_histograms
+    
+def code_book(folder_path, category, K, save=True, read_from_txt = False):
     """
     Generate the bag of words for a folder of pictures.
 
@@ -127,10 +132,14 @@ def code_book(folder_path, K, save=True, read_from_txt = False):
         A 'k' by 'N' array of centroids found at the last iteration of
         k-means.
     """
+    
+    print " =========================================="
+    print "Category" + category + "Start"
+
     des_pool = np.zeros((0, 128))
     kp = []
     if read_from_txt is True:
-        nd = np.loadtxt('word.txt')
+        nd = np.loadtxt("codebooks/"+category + '.txt')
     else:
         for image_path in folder_path:
             kp, des = __sift_dect_and_compute(image_path)
@@ -143,5 +152,9 @@ def code_book(folder_path, K, save=True, read_from_txt = False):
 
         if save:
             print "saving codebook to word.txt"
-            np.savetxt('word.txt', nd)
+            np.savetxt(category + '.txt', nd)
+
+    print "Category" + category + "Done."
+    print " =========================================="
+
     return nd
