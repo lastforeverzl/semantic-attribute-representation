@@ -1,5 +1,0 @@
-Thu Mar 27 13:51:47 2014 :Iterated images by attributes: 0.0507779121399 seconds.
-Thu Mar 27 13:53:35 2014 :Calculated codebook with K=25 : 108.669582129 seconds.
-Thu Mar 27 13:53:55 2014 :Generated 10 psamples: 19.6380331516 seconds.
-Thu Mar 27 13:53:55 2014 :Saved 10 psamples to file: 0.000197887420654 seconds.
-Thu Mar 27 13:54:15 2014 :Generated and saved 10 nsamples to file: 19.8860039711 seconds.
