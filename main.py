@@ -1,7 +1,7 @@
 from sample_generator import *
 
 if __name__ == '__main__':
-    K = 10
+
     #Category_list = ['building']
     Category_list = ['building', 'donkey', 'monkey', 'mug', 'centaur', 'bag', 'carriage', 'wolf', 'zebra', 'statue', 'jetski', 'goat']
     K = 25
