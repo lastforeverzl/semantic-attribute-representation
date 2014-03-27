@@ -1,38 +1,27 @@
-import imagefileinfo as fi
-import vq
+from sample_generator import *
 
 if __name__ == '__main__':
     K = 10
     #Category_list = ['building']
     Category_list = ['building', 'donkey', 'monkey', 'mug', 'centaur', 'bag', 'carriage', 'wolf', 'zebra', 'statue', 'jetski', 'goat']
-    Codebooks = {}
-    Pathbook = {}
-    for each_category in Category_list:
-         f = open("trainingSamples_"+each_category+".txt", 'w')
-         f.write("")
-         f.close()
-         
-    for each_category in Category_list:
-        Pathbook[each_category] = fi.filter_by_attrs(fi.images_iter("/Users/minhuigu/Downloads/ayahoo_test_images"))[each_category]
-        Codebooks[each_category] = vq.code_book(Pathbook[each_category], each_category, K,save=False, read_from_txt = True)
-    print Codebooks
+    K = 25
     
-    TrainingSamples = {}
-    for each_category in Category_list:
-        TrainingSamples[each_category] = vq.batch_quantization(Pathbook[each_category], Codebooks[each_category], soft=False)
+    images_source = "/Users/minhuigu/Downloads/ayahoo_test_images"
     
-    for each_category in Category_list:
-        print "Category: ",each_category
-        f = open("trainingSamples_"+each_category+".txt", 'a')
-        for each_sample in TrainingSamples[each_category]:
-           
-            line = "+1 "
-            for k,v in each_sample.items():
-                line = line +  "%s:%s "%(k,v)
-            f.write(line)
-            print line  
-        f.close()
-        print " "
-        
+    codebook_path = "./codebook_K%d/"%K
+    sample_path = "./samples_K%d/"%K
+    pathfile = "./image_path_K%d/"%K
+    log_path = "./log_path_K%d/"%K
+    
+    
+    SampleSets = {}
+    for each_category in Category_list: 
+        SampleSets[each_category] = SampleGenerator(each_category,K,images_source,codebook_path,sample_path,pathfile,log_path)
+        SampleSets[each_category].load_paths()
+        SampleSets[each_category].load_codebook(K,save=True, read_from_txt=False)
+        SampleSets[each_category].generate_positive_samples(num=10,soft=False)
+        SampleSets[each_category].generate_negative_samples([i for i in Category_list if i!= each_category],num=10,soft=False)
+   
+    print "Program finished."
 
 

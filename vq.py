@@ -111,7 +111,7 @@ def batch_quantization( image_path, code_book, soft=False):
 		sample_histograms.append(quatization(each_img, code_book, soft))
 	return sample_histograms
     
-def code_book(folder_path, category, K, save=True, read_from_txt = False):
+def code_book(folder_path, category,codebook_path, K, save=True, read_from_txt = False):
     """
     Generate the bag of words for a folder of pictures.
 
@@ -139,7 +139,7 @@ def code_book(folder_path, category, K, save=True, read_from_txt = False):
     des_pool = np.zeros((0, 128))
     kp = []
     if read_from_txt is True:
-        nd = np.loadtxt("codebooks/"+category + '.txt')
+        nd = np.loadtxt(codebook_path)
     else:
         for image_path in folder_path:
             kp, des = __sift_dect_and_compute(image_path)
@@ -151,8 +151,8 @@ def code_book(folder_path, category, K, save=True, read_from_txt = False):
         nd, p = cluster.vq.kmeans2(des_pool, K)
 
         if save:
-            print "saving codebook to word.txt"
-            np.savetxt(category + '.txt', nd)
+            print "saving codebook to txt"
+            np.savetxt(codebook_path, nd)
 
     print "Category" + category + "Done."
     print " =========================================="
