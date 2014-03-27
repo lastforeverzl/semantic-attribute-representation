@@ -74,7 +74,6 @@ def filter_by_attrs(images_iter, iterable=False):
           ('attribute2', 'filepath4'), ('attribute2', 'filepath5')
         iterator-3 =>
           ('attribute3', 'filepath6'), ('attribute3', 'filepath7'), ('attribute3', 'filepath8')
-    
     """
     d = defaultdict(list)
     def image_generator(iter):
