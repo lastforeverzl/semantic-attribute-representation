@@ -11,7 +11,7 @@ class SVM():
         model: SVM implementation based on OpenCV
         _samples: training data.
         _responses: label data.
-    """
+    """gi
 
     def __init__(self, directory):
         """Inits SVM class according to given directory"""
