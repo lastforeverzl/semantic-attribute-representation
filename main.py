@@ -7,41 +7,41 @@ from sample_generator import *
 
 if __name__ == '__main__':
 
-    now = time.time()
+    # now = time.time()
     
-    #Category_list = ['building']
-    Category_list = ['building', 'donkey', 'monkey', 'mug', 'centaur', 'bag', 'carriage', 'wolf', 'zebra', 'statue', 'jetski', 'goat']
-    K = 25
+    # #Category_list = ['building']
+    # Category_list = ['building', 'donkey', 'monkey', 'mug', 'centaur', 'bag', 'carriage', 'wolf', 'zebra', 'statue', 'jetski', 'goat']
+    # K = 25
     
-    interval2 = time.time() - now
-    print "Used %s seconds."%interval2
+    # interval2 = time.time() - now
+    # print "Used %s seconds."%interval2
     
-    images_source = "/Users/minhuigu/Downloads/ayahoo_test_images"
+    # images_source = "/Users/minhuigu/Downloads/ayahoo_test_images"
     
-    codebook_path = "./codebooks_K%d/"%K
-    sample_path = "./samples_K%d/"%K
-    pathfile = "./images_K%d/"%K
-    log_path = "./logs_K%d/"%K
+    # codebook_path = "./codebooks_K%d/"%K
+    # sample_path = "./samples_K%d/"%K
+    # pathfile = "./images_K%d/"%K
+    # log_path = "./logs_K%d/"%K
     
     
-    SampleSets = {}
-    for each_category in Category_list: 
-        SampleSets[each_category] = SampleGenerator(each_category,K,images_source,codebook_path,sample_path,pathfile,log_path)
-        SampleSets[each_category].load_paths()
-        SampleSets[each_category].load_codebook(K,save=True, read_from_txt=True)
-        SampleSets[each_category].generate_positive_samples(soft=False)
-        SampleSets[each_category].generate_negative_samples([i for i in Category_list if i!= each_category],soft=False)
+    # SampleSets = {}
+    # for each_category in Category_list: 
+    #     SampleSets[each_category] = SampleGenerator(each_category,K,images_source,codebook_path,sample_path,pathfile,log_path)
+    #     SampleSets[each_category].load_paths()
+    #     SampleSets[each_category].load_codebook(K,save=True, read_from_txt=True)
+    #     SampleSets[each_category].generate_positive_samples(soft=False)
+    #     SampleSets[each_category].generate_negative_samples([i for i in Category_list if i!= each_category],soft=False)
    
-    print "Program finished."
-    interval = time.time() - now
-    print "Used %s seconds."%interval
+    # print "Program finished."
+    # interval = time.time() - now
+    # print "Used %s seconds."%interval
 
     # The code below edited based on the file easy.py in libsvm library.
     # Used to scale, train, predict the samples.
 
     if len(sys.argv) <= 1:
-    print('Usage: {0} training_file [testing_file]'.format(sys.argv[0]))
-    raise SystemExit
+        print('Usage: {0} training_file [testing_file]'.format(sys.argv[0]))
+        raise SystemExit
 
     # svm, grid, and gnuplot executable files
 
@@ -81,11 +81,15 @@ if __name__ == '__main__':
         predict_test_file = file_name + ".predict"
 
     cmd = '{0} -s "{1}" "{2}" > "{3}"'.format(svmscale_exe, range_file, train_pathname, scaled_file)
-    print('Scaling training data...')
+    print('****************************')
+    print('* Scaling training data... *')
+    print('****************************')
     Popen(cmd, shell = True, stdout = PIPE).communicate()   
 
     cmd = '{0} -svmtrain "{1}" -gnuplot "{2}" "{3}"'.format(grid_py, svmtrain_exe, gnuplot_exe, scaled_file)
-    print('Cross validation...')
+    print('***********************')
+    print('* Cross validation... *')
+    print('***********************')
     f = Popen(cmd, shell = True, stdout = PIPE).stdout
 
     line = ''
@@ -98,7 +102,9 @@ if __name__ == '__main__':
     print('Best c={0}, g={1} CV rate={2}'.format(c,g,rate))
 
     cmd = '{0} -c {1} -g {2} "{3}" "{4}"'.format(svmtrain_exe,c,g,scaled_file,model_file)
-    print('Training...')
+    print('***************')
+    print('* Training... *')
+    print('***************')
     Popen(cmd, shell = True, stdout = PIPE).communicate()
 
     print('Output model: {0}'.format(model_file))
@@ -108,7 +114,9 @@ if __name__ == '__main__':
         Popen(cmd, shell = True, stdout = PIPE).communicate()   
 
         cmd = '{0} "{1}" "{2}" "{3}"'.format(svmpredict_exe, scaled_test_file, model_file, predict_test_file)
-        print('Testing...')
+        print('**************')
+        print('* Testing... *')
+        print('**************')
         Popen(cmd, shell = True).communicate()  
 
         print('Output prediction: {0}'.format(predict_test_file))
