@@ -53,6 +53,26 @@ def filter_by_attrs(images_iter, iterable=False):
     Returns
     -------
     A iterator or dictionary contains all of images categorized by attribute name.
+    
+    The format of dictionary looks like below:
+    
+        {'attribute': ['filepath1', 'filepath2', 'filepath3']}
+    
+    The format of iterator looks like below:
+    
+        ('attribute1', iterator-1),
+        ('attribute2', iterator-2),
+        ('attribute3', iterator-3), ...
+        
+        where:
+        iterator-1 =>
+          ('attribute1', 'filepath1'), ('attribute1', 'filepath2'), ('attribute1', 'filepath3')
+        iterator-2 =>
+          ('attribute2', 'filepath4'), ('attribute2', 'filepath5')
+        iterator-3 =>
+          ('attribute3', 'filepath6'), ('attribute3', 'filepath7'), ('attribute3', 'filepath8')
+    
+    
     """
     d = defaultdict(list)
     def image_generator(iter):
