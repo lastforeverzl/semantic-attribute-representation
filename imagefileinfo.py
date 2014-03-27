@@ -56,7 +56,9 @@ def filter_by_attrs(images_iter, iterable=False):
     
     The format of dictionary looks like below:
     
-        {'attribute': ['filepath1', 'filepath2', 'filepath3']}
+        {'attribute1': ['filepath1', 'filepath2', 'filepath3']
+         'attribute2': ['filepath4', 'filepath5']
+         'attribute3': ['filepath6', 'filepath7', 'filepath8']}
     
     The format of iterator looks like below:
     
