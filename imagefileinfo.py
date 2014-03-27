@@ -1,7 +1,7 @@
 """
 Module for getting image file from ayahoo_test_images folder.
 
-Use images_iter function to get info on all files in the directory.
+Use images_iter function to get all files infomation in given directory.
 Use filter_by_attrs function to categorize image by their attribute.
 """
 
