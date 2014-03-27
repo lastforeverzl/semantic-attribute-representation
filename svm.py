@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import re
 
 class SVM():
 	"""SVM algorithm based on opencv CvSVM
