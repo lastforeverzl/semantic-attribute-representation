@@ -48,10 +48,11 @@ def filter_by_attrs(images_iter, iterable=False):
     Parameters
     ----------
     images_iter: image list iterator
+    iterable: flag for the result format. return iterator if it's true.
 
     Returns
     -------
-    A dictionary contains all of images categorized by attribute name.
+    A iterator or dictionary contains all of images categorized by attribute name.
     """
     d = defaultdict(list)
     def image_generator(iter):
