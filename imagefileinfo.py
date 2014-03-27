@@ -7,6 +7,7 @@ Use filter_by_attrs function to categorize image by their attribute.
 
 import os, sys, re
 from collections import defaultdict
+from itertools import groupby
 
 def __jpg_file_info(*args):
     """
@@ -40,26 +41,29 @@ def images_iter(directory):
     return (_get_func(os.path.basename(f))(os.path.basename(f), f,
             _parse_attribute(os.path.basename(f))) for f in imagefiles)
 
-def filter_by_attrs(image_iter):
+def filter_by_attrs(images_iter, iterable=False):
     """
     Filter image file by attribute name and store them into a dictionary
 
     Parameters
     ----------
-    image_iter: image list iterator
+    images_iter: image list iterator
 
     Returns
     -------
     A dictionary contains all of images categorized by attribute name.
     """
+    d = defaultdict(list)
     def image_generator(iter):
+        "Create tuple iterator contains attribute and location infos"
         for image in iter:
             yield (image["attribute"], image["location"])
-    d = defaultdict(list)
-    for (k, v) in image_generator(image_iter):
+    def get_attr((attr, loc)):
+        "Return attribute for itertool.groupby() to group files."
+        return attr
+    for (k, v) in image_generator(images_iter):
         d[k].append(v)
-    return d
-
+    return iterable and groupby(image_generator(images_iter), get_attr) or d
 
 
 
