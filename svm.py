@@ -41,9 +41,11 @@ class SVM():
 
 		SVM params:
 			params.svm_type    = CvSVM::C_SVC
-			params.kernel_type = CvSVM::LINEAR
+			params.kernel_type = CvSVM::RBF
+			params.C: regulates to optimal value according to the samples and the result, 
+						(0.00001， 0.001， 0.01， 0.1， 1， 10， 100， 1000， 5000)
 		"""
-		params = dict( kernel_type = cv2.SVM_LINEAR, svm_type = cv2.SVM_C_SVC, C = 1 )
+		params = dict( kernel_type = cv2.SVM_RBF, svm_type = cv2.SVM_C_SVC, C = 0.125 )
 		self.model.train(self._samples, self._responses, None, None, params = params)
 
 	def predict(self):
