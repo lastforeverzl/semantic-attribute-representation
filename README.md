@@ -1,7 +1,7 @@
 semantic-attribute-representation
 =================================
 
-In this repository, based on what we have finished so far, we need to extend it to build semantic and attribute representation for our images. Using the a-TRECVID dataset (http://www.ee.columbia.edu/ln/dvmm/a-TRECVID/) as which has 0.26 million images of 126 fully labeled attributes. 
+In this repository, based on what we have finished so far, we need to extend it to build semantic and attribute representation for our images. Using aYahoo dataset which has 12 categories, wolf, zebra, goat, donkey, monkey, statue of people, centaur, bag, building, jet ski, carriage, and mug, including 2,237 pictures.
 
 ##Dependecies:
 
@@ -14,6 +14,17 @@ In this repository, based on what we have finished so far, we need to extend it 
 [LIBSVM_3.17](http://www.csie.ntu.edu.tw/~cjlin/libsvm/)
 
 ##File Structure:
+```
+-root/
+  |__K25_outputs/
+  |__libsvm-3.17/
+  |__README.md
+  |__imagefileinfo.py
+  |__main.py
+  |__sample_generator.py
+  |__vq.py
+```
 
 ##Running Code:
+
 
