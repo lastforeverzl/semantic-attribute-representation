@@ -3,15 +3,26 @@ import numpy as np
 import re
 
 class SVM():
-	'''wrapper for OpenCV SimpleVectorMachine algorithm'''
-	def __init__(self, filename):
+	"""SVM algorithm based on opencv CvSVM
+
+	Wrapper for OpenCV SimpleVectorMachine algorithm
+
+	Attributes:
+		directory: the path of one category folder.
+		model: SVM implementation based on OpenCV
+		_samples: training data.
+		_responses: label data.
+	"""
+
+	def __init__(self, directory):
+		"""Inits SVM class according to given directory"""
 		self.model = cv2.SVM()
 
 		input_file = []
 		training_Data = []
 		label_data = []
 
-		with open(filename) as inputfile:
+		with open(directory) as inputfile:
 			for line in inputfile:
 				input_file.append(line.strip().split(' '))
 
@@ -19,19 +30,25 @@ class SVM():
 			label_data.append(int(elem.pop(0)))
 			temp = []
 			for s in elem:
-				s = s.split(':')[1]
-				temp.append(int(s))
+				temp.append(int(s.split(':')[1]))
 			training_Data.append(temp)
 
 		self._samples = np.array(training_Data, dtype = np.float32)
 		self._responses = np.array(label_data, dtype = np.float32)
 
 	def train(self):
-		#setting algorithm parameters
+		"""
+		Trains an SVM
+
+		SVM params:
+			params.svm_type    = CvSVM::C_SVC
+			params.kernel_type = CvSVM::LINEAR
+		"""
 		params = dict( kernel_type = cv2.SVM_LINEAR, svm_type = cv2.SVM_C_SVC, C = 1 )
 		self.model.train(self._samples, self._responses, None, None, params = params)
 
 	def predict(self):
+		"""Predicts the response for input samples"""
 		return np.float32( [self.model.predict(s) for s in self._samples])
 
 
