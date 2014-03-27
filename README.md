@@ -11,6 +11,8 @@ In this repository, based on what we have finished so far, we need to extend it 
 
 [Numpy] (http://www.numpy.org)
 
+[LIBSVM_3.17](http://www.csie.ntu.edu.tw/~cjlin/libsvm/)
+
 ##File Structure:
 
 ##Running Code:
