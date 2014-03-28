@@ -74,7 +74,10 @@ def quatization(image, code_book, soft=False):
     adict: the frequency histogram of the representation of bag of words
     """
     kp, des = __sift_dect_and_compute(image)
-    print "Quantizating: ",image, "--> SIFT feature number: ", len(kp)
+    if not soft:
+        print "Hard Quantizating: ",image, "--> SIFT feature number: ", len(kp)
+    else:
+        print "Soft Quantizating: ",image, "--> SIFT feature number: ", len(kp)
     adict = {}
     shortest = []
     for i in range(0, len(code_book)):

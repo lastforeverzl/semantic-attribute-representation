@@ -15,16 +15,25 @@ if __name__ == '__main__':
         now = time.time()
         
         Category_list = ['building', 'donkey', 'monkey', 'mug', 'centaur', 'bag', 'carriage', 'wolf', 'zebra', 'statue', 'jetski', 'goat']
-        K = 20
+        #K = 20
+        K = input("Input cluster centers K: ")
+        K = int(K)
         
+        multi = input("Binary classfication for one category, or multi-categories classification?\n"\
+                    "1-->Binary, 2-->multi-categories: ")
+        Multi_category = False if int(multi) == 1 else True
+
+        quanti = input("Do hard of soft quantizaiont?\n"\
+                    "1-->hard, 2-->soft: ")
+
+        soft_quantization = False if int(quanti) == 1 else True
+
         images_source = "/Users/minhuigu/Downloads/ayahoo_test_images"
-        
         codebook_path = "./codebook_K%d/"%K
         sample_path = "./samples_K%d/"%K
         pathfile = "./image_path_K%d/"%K
         log_path = "./log_path_K%d/"%K
-        Multi_category = True
-        soft_quantization = False
+        
         from_txt = False
         if Multi_category:
             from_txt = False
@@ -44,15 +53,13 @@ if __name__ == '__main__':
         interval = time.time() - now
         print "Used %s seconds."%interval
 
-    else:
+    elif option == 2:
 
         #The code below edited based on the file easy.py in libsvm library.
         #Used to scale, train, predict the samples.
-
-        if len(sys.argv) <= 1:
-            print('Usage: {0} training_file [testing_file]'.format(sys.argv[0]))
-            raise SystemExit
-
+           
+        print('Usage: {0} training_file [testing_file]'.format(sys.argv[0]))
+            
         # svm, grid, and gnuplot executable files
 
         is_win32 = (sys.platform == 'win32')
@@ -61,7 +68,8 @@ if __name__ == '__main__':
             svmtrain_exe = "libsvm-3.17/svm-train"
             svmpredict_exe = "libsvm-3.17/svm-predict"
             grid_py = "libsvm-3.17/tools/grid.py"
-            gnuplot_exe = "/usr/local/Cellar/gnuplot/4.6.5/bin/gnuplot"
+            gnuplot_exe = "/usr/local/bin/gnuplot"
+            #gnuplot_exe = "/usr/local/Cellar/gnuplot/4.6.5/bin/gnuplot"
         else:
             # example for windows
             svmscale_exe = r"libsvm-3.17\windows\svm-scale.exe"
@@ -76,15 +84,18 @@ if __name__ == '__main__':
         assert os.path.exists(gnuplot_exe),"gnuplot executable not found"
         assert os.path.exists(grid_py),"grid.py not found"
 
-        train_pathname = sys.argv[1]
+
+        train_pathname = raw_input("input train file: ")
         assert os.path.exists(train_pathname),"training file not found"
         file_name = os.path.split(train_pathname)[1]
         scaled_file = file_name + ".scale"
         model_file = file_name + ".model"
         range_file = file_name + ".range"
 
-        if len(sys.argv) > 2:
-            test_pathname = sys.argv[2]
+        dotest = input("add test file? 1-->yes, 2-->no: ")
+
+        if int(dotest) == 1:
+            test_pathname = raw_input("input test file: ")
             file_name = os.path.split(test_pathname)[1]
             assert os.path.exists(test_pathname),"testing file not found"
             scaled_test_file = file_name + ".scale"
@@ -130,4 +141,5 @@ if __name__ == '__main__':
             Popen(cmd, shell = True).communicate()  
 
             print('Output prediction: {0}'.format(predict_test_file))
-
+    else:
+        raise SystemExit
