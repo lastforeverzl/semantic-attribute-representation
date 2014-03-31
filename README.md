@@ -32,6 +32,7 @@ In this repository, based on what we have finished so far, we need to extend it 
   python main.py
 ```
 and choose option 1
+
 2. Running SVM classification
 ```
   python main.py
