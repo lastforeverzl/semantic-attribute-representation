@@ -1,0 +1,48 @@
+Thu Mar 27 18:38:24 2014 :Iterated images by attributes: 0.0423820018768 seconds.
+Thu Mar 27 18:40:42 2014 :Calculated codebook with K=20 : 137.841596127 seconds.
+Thu Mar 27 18:46:46 2014 :Generated 100000000 psamples: 364.785558939 seconds.
+Thu Mar 27 18:46:46 2014 :Saved 213 psamples to file: 0.00492382049561 seconds.
+Thu Mar 27 18:46:47 2014 :Iterated images by attributes: 0.045520067215 seconds.
+Thu Mar 27 18:47:36 2014 :Calculated codebook with K=20 : 49.3486468792 seconds.
+Thu Mar 27 18:50:01 2014 :Generated 100000000 psamples: 145.014958858 seconds.
+Thu Mar 27 18:50:01 2014 :Saved 128 psamples to file: 0.002032995224 seconds.
+Thu Mar 27 18:50:01 2014 :Iterated images by attributes: 0.0416901111603 seconds.
+Thu Mar 27 18:51:25 2014 :Calculated codebook with K=20 : 83.8097498417 seconds.
+Thu Mar 27 18:55:34 2014 :Generated 100000000 psamples: 249.489994049 seconds.
+Thu Mar 27 18:55:34 2014 :Saved 156 psamples to file: 0.00248503684998 seconds.
+Thu Mar 27 18:58:01 2014 :Iterated images by attributes: 0.0440711975098 seconds.
+Thu Mar 27 18:58:14 2014 :Calculated codebook with K=20 : 13.7145590782 seconds.
+Thu Mar 27 18:58:57 2014 :Generated 100000000 psamples: 42.5318050385 seconds.
+Thu Mar 27 18:58:57 2014 :Saved 48 psamples to file: 0.00104093551636 seconds.
+Thu Mar 27 19:31:50 2014 :Iterated images by attributes: 0.0435788631439 seconds.
+Thu Mar 27 19:33:10 2014 :Calculated codebook with K=20 : 80.7715268135 seconds.
+Thu Mar 27 19:37:21 2014 :Generated 100000000 psamples: 251.138523102 seconds.
+Thu Mar 27 19:37:21 2014 :Saved 149 psamples to file: 0.00250792503357 seconds.
+Thu Mar 27 18:58:57 2014 :Iterated images by attributes: 0.0448141098022 seconds.
+Thu Mar 27 19:00:20 2014 :Calculated codebook with K=20 : 83.3212838173 seconds.
+Thu Mar 27 19:03:33 2014 :Generated 100000000 psamples: 193.32362318 seconds.
+Thu Mar 27 19:03:33 2014 :Saved 279 psamples to file: 0.00434708595276 seconds.
+Thu Mar 27 18:55:34 2014 :Iterated images by attributes: 0.041540145874 seconds.
+Thu Mar 27 18:56:17 2014 :Calculated codebook with K=20 : 42.3078999519 seconds.
+Thu Mar 27 18:58:00 2014 :Generated 100000000 psamples: 103.907262087 seconds.
+Thu Mar 27 18:58:00 2014 :Saved 210 psamples to file: 0.00326895713806 seconds.
+Thu Mar 27 19:07:20 2014 :Iterated images by attributes: 0.0524878501892 seconds.
+Thu Mar 27 19:08:44 2014 :Calculated codebook with K=20 : 84.0735030174 seconds.
+Thu Mar 27 19:12:42 2014 :Generated 100000000 psamples: 238.318792105 seconds.
+Thu Mar 27 19:12:42 2014 :Saved 171 psamples to file: 0.00406098365784 seconds.
+Thu Mar 27 19:12:42 2014 :Iterated images by attributes: 0.0442988872528 seconds.
+Thu Mar 27 19:14:29 2014 :Calculated codebook with K=20 : 107.046427011 seconds.
+Thu Mar 27 19:19:46 2014 :Generated 100000000 psamples: 317.292229891 seconds.
+Thu Mar 27 19:19:46 2014 :Saved 179 psamples to file: 0.00480699539185 seconds.
+Thu Mar 27 19:19:46 2014 :Iterated images by attributes: 0.042750120163 seconds.
+Thu Mar 27 19:21:33 2014 :Calculated codebook with K=20 : 106.832043886 seconds.
+Thu Mar 27 19:26:33 2014 :Generated 100000000 psamples: 299.717252016 seconds.
+Thu Mar 27 19:26:33 2014 :Saved 191 psamples to file: 0.0065860748291 seconds.
+Thu Mar 27 19:26:33 2014 :Iterated images by attributes: 0.0427558422089 seconds.
+Thu Mar 27 19:28:15 2014 :Calculated codebook with K=20 : 102.025081158 seconds.
+Thu Mar 27 19:31:49 2014 :Generated 100000000 psamples: 214.446213007 seconds.
+Thu Mar 27 19:31:49 2014 :Saved 366 psamples to file: 0.00895285606384 seconds.
+Thu Mar 27 19:03:34 2014 :Iterated images by attributes: 0.0426790714264 seconds.
+Thu Mar 27 19:04:32 2014 :Calculated codebook with K=20 : 58.7311601639 seconds.
+Thu Mar 27 19:07:19 2014 :Generated 100000000 psamples: 167.228296041 seconds.
+Thu Mar 27 19:07:19 2014 :Saved 147 psamples to file: 0.003173828125 seconds.
