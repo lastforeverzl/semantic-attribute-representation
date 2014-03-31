@@ -25,7 +25,7 @@ In this repository, based on what we have finished so far, we need to extend it 
 ```
 
 ##Running Code:
-1. Generate Samples or do classsification test
+1. Generate Samples
 ```
   python main.py
 ```
