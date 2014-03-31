@@ -16,13 +16,12 @@ In this repository, based on what we have finished so far, we need to extend it 
 ##File Structure:
 ```
 -root/
-  |__K25_outputs/
-  |__libsvm-3.17/
-  |__README.md
-  |__imagefileinfo.py
-  |__main.py
-  |__sample_generator.py
-  |__vq.py
+  |__K20_outputs/                 (Outputs for k = 20)
+  |__K25_outputs/                 (Outputs for k = 25)
+  |__Multiclasses_output_K20/     (Multiclasses outputs for k = 20)
+  |__lib/                         (Directory for holding library files)
+  |__libsvm-3.17/                 (LibSVM algorithm lib)
+  |__main.py                      (Runnable file)
 ```
 
 ##Running Code:
