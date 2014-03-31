@@ -31,6 +31,6 @@ In this repository, based on what we have finished so far, we need to extend it 
 ```
 2. Running SVM classification
 ```
-  python main.py training_file [testing_file]
+  python main.py
 ```
 
