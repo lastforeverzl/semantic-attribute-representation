@@ -2,7 +2,7 @@ import sys
 import os
 import time
 from subprocess import *
-from sample_generator import *
+from lib.sample_generator import *
 
 if __name__ == '__main__':
 
@@ -11,14 +11,14 @@ if __name__ == '__main__':
         option = input("Generate Samples or do classsification test?\n "\
                      "1-->Generate Samples, 2-->Classification:  ")
 
-    if option == 1: 
+    if option == 1:
         now = time.time()
-        
+
         Category_list = ['building', 'donkey', 'monkey', 'mug', 'centaur', 'bag', 'carriage', 'wolf', 'zebra', 'statue', 'jetski', 'goat']
         #K = 20
         K = input("Input cluster centers K: ")
         K = int(K)
-        
+
         multi = input("Binary classfication for one category, or multi-categories classification?\n"\
                     "1-->Binary, 2-->multi-categories: ")
         Multi_category = False if int(multi) == 1 else True
@@ -33,13 +33,13 @@ if __name__ == '__main__':
         sample_path = "./samples_K%d/"%K
         pathfile = "./image_path_K%d/"%K
         log_path = "./log_path_K%d/"%K
-        
+
         from_txt = False
         if Multi_category:
             from_txt = False
-        
+
         SampleSets = {}
-        for each_category in Category_list: 
+        for each_category in Category_list:
             SampleSets[each_category] = SampleGenerator(each_category,K,images_source,codebook_path,\
                                     sample_path,pathfile,log_path,multi_categories=Multi_category,index=Category_list.index(each_category))
             SampleSets[each_category].load_paths()
@@ -47,7 +47,7 @@ if __name__ == '__main__':
             SampleSets[each_category].generate_positive_samples(soft=soft_quantization)
             if not Multi_category:
                 SampleSets[each_category].generate_negative_samples([i for i in Category_list if i!= each_category],soft=soft_quantization)
-       
+
         print "Program finished."
 
         interval = time.time() - now
@@ -57,9 +57,9 @@ if __name__ == '__main__':
 
         #The code below edited based on the file easy.py in libsvm library.
         #Used to scale, train, predict the samples.
-           
+
         print('Usage: {0} training_file [testing_file]'.format(sys.argv[0]))
-            
+
         # svm, grid, and gnuplot executable files
 
         is_win32 = (sys.platform == 'win32')
@@ -105,7 +105,7 @@ if __name__ == '__main__':
         print('****************************')
         print('* Scaling training data... *')
         print('****************************')
-        Popen(cmd, shell = True, stdout = PIPE).communicate()   
+        Popen(cmd, shell = True, stdout = PIPE).communicate()
 
         cmd = '{0} -svmtrain "{1}" -gnuplot "{2}" "{3}"'.format(grid_py, svmtrain_exe, gnuplot_exe, scaled_file)
         print('***********************')
@@ -132,13 +132,13 @@ if __name__ == '__main__':
         if len(sys.argv) > 2:
             cmd = '{0} -r "{1}" "{2}" > "{3}"'.format(svmscale_exe, range_file, test_pathname, scaled_test_file)
             print('Scaling testing data...')
-            Popen(cmd, shell = True, stdout = PIPE).communicate()   
+            Popen(cmd, shell = True, stdout = PIPE).communicate()
 
             cmd = '{0} "{1}" "{2}" "{3}"'.format(svmpredict_exe, scaled_test_file, model_file, predict_test_file)
             print('**************')
             print('* Testing... *')
             print('**************')
-            Popen(cmd, shell = True).communicate()  
+            Popen(cmd, shell = True).communicate()
 
             print('Output prediction: {0}'.format(predict_test_file))
     else:
