@@ -25,5 +25,12 @@ In this repository, based on what we have finished so far, we need to extend it 
 ```
 
 ##Running Code:
-
+1. Generate Samples or do classsification test
+```
+  python main.py
+```
+2. Running SVM classification
+```
+  python main.py training_file [testing_file]
+```
 
