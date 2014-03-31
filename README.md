@@ -16,9 +16,11 @@ In this repository, based on what we have finished so far, we need to extend it 
 ##File Structure:
 ```
 -root/
-  |__K20_outputs/                 (Outputs for k = 20)
-  |__K25_outputs/                 (Outputs for k = 25)
-  |__Multiclasses_output_K20/     (Multiclasses outputs for k = 20)
+  |__K20_samples/                 (Samples for k = 20)
+  |__K25_samples/                 (Samples for k = 25)
+  |__Multiclasses_K20samples/     (Multiclasses sampels for k = 20)
+  |__K20_classification_results   (12 Binary classification results for k = 20)
+  |__Multicategories_classification_reuslts (Multi-categories classification result)
   |__lib/                         (Directory for holding library files)
   |__libsvm-3.17/                 (LibSVM algorithm lib)
   |__main.py                      (Runnable file)
