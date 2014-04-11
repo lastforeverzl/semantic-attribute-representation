@@ -5,7 +5,9 @@ Use images_iter function to get all files infomation in given directory.
 Use filter_by_attrs function to categorize image by their attribute.
 """
 
-import os, sys, re
+import os
+import sys
+import re
 from collections import defaultdict
 from itertools import groupby
 
